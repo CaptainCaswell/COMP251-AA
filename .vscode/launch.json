@@ -1,0 +1,20 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}",
+            "console": "internalConsole"
+        },
+        {
+            "type": "java",
+            "name": "SinglyLinkedListTest",
+            "request": "launch",
+            "mainClass": "SinglyLinkedListTest",
+            "projectName": "COMP251-AA_bdff19ba",
+            "console": "internalConsole"
+        }
+    ]
+}

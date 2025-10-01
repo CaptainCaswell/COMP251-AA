@@ -5,8 +5,9 @@ interface ADTList<T> {
 	void clear();
 	int indexOf(T value);
 	T get(int index);
-	void remove(int index);
-	boolean set(int index, T value);
+	T remove(int index);
+	T remove(T value);
+	void set(int index, T value);
 	int size();
 	boolean contains(T value);
 }
