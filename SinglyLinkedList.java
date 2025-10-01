@@ -7,9 +7,16 @@ class SinglyLinkedList<T> implements ADTList<T> {
 	}
 
 	// Instance Variables
-	private Node<T> head = null;
-	private Node<T> tail = null;
-	private int size = 0;
+	private Node<T> head;
+	private Node<T> tail;
+	private int size;
+
+	// Constructor
+	public SinglyLinkedList() {
+		head = null;
+		tail = null;
+		size = 0;
+	}
 
 	// Add to end of list
 	public void add( T value ) {
@@ -58,20 +65,90 @@ class SinglyLinkedList<T> implements ADTList<T> {
 
 		// Case 3: Index in the middle of list
 		Node<T> tempNode = head; // Create a copy of head
-		for (int i = 0; i < index -1; i++) {
+		for (int i = 0; i < index - 1; i++) {
 			tempNode = tempNode.next; // Traverse until tempNode is the node before the index
 		}
 
 		newNode.next = tempNode.next; // Point newNode at the node currently at that index
 		tempNode.next = newNode; // Point the node before to the index
 	}
-	
-	public void clear() {}
+
+	// Set: replace given index with given value
+	public void set( int index, T value ) {
+		if ( validate(index) ) return;
+
+		Node<T> tempNode = head;
+		for (int i = 0; i < index; i++) {
+			tempnode = tempNode.next; // Traverse until tempNode is the node at index
+		}
+
+		tempNode.item = value; // Writes value to node
+	}
+
+	public void clear() {} // Just head and tail to null?
 	public int indexOf(T value) { return 0; }
 	public T get(int index) { return null; }
-	public void remove(int index) {}
-	public boolean set(int index, T value) { return false; }
-	public int size() { return 0; }
-	public boolean contains(T value) { return false; }
+
+	// Removes node at index, returns data for removed node
+	public T remove(int index) { 
+		if ( validate(index) ) return;
+
+
+
+		// Case 1: Index 0
+		if ( index == 0 ) {
+			T copy = head.item; // Store value to be removed;
+			head = head.next; // Change head to the next node
+			size--;
+			return copy; // Return removed value
+		}
+
+		// Case 2 + 3
+		Node<T> tempNode = head;
+		for ( int i = 0; i < index - 1; i++ ) {
+			tempNode = tempnNode.next; // Traverse until tempNode is the node at index
+		}
+
+		// Case 2: Index at end of list
+		if (tempNode.next == tail ) {
+			T copy = tail.data; // Copy the tail data being removed
+			tail = tempNode; // Make second to last node the new tail
+			size--;
+			return copy;
+		}
+
+		// Case 3: Index in middle of list
+		T copy = tempNode.next.item; // Copy value to be removed
+		tempNode.next = tempNode.next.next; // Connect to node after index to be removed
+		size--;
+		return copy;
+
+	}
+
+	public T remove( T value ) {
+
+		// Iterate through all nodes
+		Node<T> tempNode = head;
+		for ( int i = 0; i < size; i++ ) {
+			// If a node matches class of value, return and remove that index
+			return remove( i, value);
+		}
+
+		// If no matches found
+		return null;
+	}
+
+	public int size() { return size; }
+	public boolean contains(T value) { return false; } // Copy from remove (T value)
 	public ADTList<T> subList(int fromIndex, int toIndex) { return null; }
+
+	// Private methods
+	private boolean validate(int index) { // Method to check if index is valid
+		if ( index < 0 || index > size - 1) {
+			System.out.println("Index out of bounds");
+			return false;
+		} else {
+			return true;
+		}
+	}
 }
