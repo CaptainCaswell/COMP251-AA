@@ -21,33 +21,36 @@ class SinglyLinkedList<T> implements ADTList<T> {
 		// New node setup
 		Node<T> newNode = new Node<T>(); // Create new node
 		newNode.item = value; // Assign node with value passed to constructor
+		newNode.next = null;
 
 		// Case 1: Empty list (new head and tail)
-		if( head == null ) {
+		if( size == 0 ) {
 			head = tail = newNode; // Point head and tail at new node
-			size++;
-		} else {
-		
+		}
+
 		// Case 2: Non-empty list (add after tail)
+		else {		
 			tail.next = newNode; // Point the old tail to the new node
 			tail = newNode; // Update tail to new node
-			size++;
 		}
+
+		size++;
 	}
 
 	public void add( int index, T value ) {
 		// Check if index valid. Must be between 0 and size, inclusive
 		if ( index < 0 || index > size ) {
-			System.out.println( "Index out of bounds" );
+			System.out.println( "Error: Index out of bounds" );
 			return;
 		}
 
-		// Case 1: Index is the last or index 0 on empty list
+		// Case 1: Index is last index
 		if ( index == size ) {
 			add(value); // Reuse add to end method
 			return;
 		}
 
+		// Create temp node
 		Node<T> newNode = new Node<T>(); // New node to be added
 		newNode.item = value; // Assign new node the value passed to method
 
@@ -115,7 +118,7 @@ class SinglyLinkedList<T> implements ADTList<T> {
 		// Iterate through all nodes
 		Node<T> tempNode = head;
 		for ( int i = 0; i < size; i++ ) {
-			if (tempNode.item.equals( value ) ) return remove( i );
+			if ( tempNode.item.equals( value ) ) return remove( i );
 			tempNode = tempNode.next; 
 		}
 
@@ -177,6 +180,7 @@ class SinglyLinkedList<T> implements ADTList<T> {
 	public ADTList<T> subList(int fromIndex, int toIndex) {
 		// Validate indexes
 		if ( fromIndex < 0 || fromIndex > toIndex || toIndex > size -1 ) {
+				System.out.println( "Error: Index out of bounds" );
 				return null;
 		}
 		
@@ -184,12 +188,14 @@ class SinglyLinkedList<T> implements ADTList<T> {
 		Node<T> tempNode = head;
 		int i = 0;
 
+		// Traverse to just before sublist
 		while ( i < fromIndex ) {
 			tempNode = tempNode.next;
 			i++;
 		}
 
-		while ( i < toIndex ) {
+		// Iterate through list, adding to new list
+		while ( i <= toIndex ) {
 			output.add( tempNode.item );
 			tempNode = tempNode.next;
 			i++;
@@ -218,7 +224,7 @@ class SinglyLinkedList<T> implements ADTList<T> {
 	// Private methods
 	private boolean validate(int index) { // Method to check if index is valid
 		if ( index < 0 || index > size - 1 ) {
-			System.out.println( "Index out of bounds" );
+			System.out.println( "Error: Index out of bounds" );
 			return false;
 		} else {
 			return true;
