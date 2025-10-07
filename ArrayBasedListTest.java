@@ -1,6 +1,6 @@
 public class ArrayBasedListTest {
     public static void main( String[] args ) {
-        ArrayBasedListR<Object> testList = new ArrayBasedListR<>();
+        ArrayBasedList<Object> testList = new ArrayBasedList<>();
 
         testList.add( 0 );
         testList.add( 1 );

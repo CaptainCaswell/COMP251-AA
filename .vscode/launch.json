@@ -3,6 +3,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "ArrayBasedListRecord",
+            "request": "launch",
+            "mainClass": "ArrayBasedListRecord",
+            "projectName": "COMP251-AA-1_3a9f98de"
+        },
+        {
+            "type": "java",
             "name": "ArrayBasedListTest",
             "request": "launch",
             "mainClass": "ArrayBasedListTest",

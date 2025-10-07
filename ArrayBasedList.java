@@ -1,4 +1,4 @@
-class ArrayBasedListR<T> implements ADTList<T> {
+class ArrayBasedList<T> implements ADTList<T> {
 
 	private T[] items;
 	private int capacity;
@@ -8,13 +8,13 @@ class ArrayBasedListR<T> implements ADTList<T> {
 	
 	/* Constructors */
 	//Copied code from assignment example for constructing ArrayBasedList but with a default capacity of 10
-	public ArrayBasedListR() { //Time: O(1), Space: O(n)
+	public ArrayBasedList() { //Time: O(1), Space: O(n)
 		capacity = DEFAULT_CAPACITY;
 		items = (T[]) new Object[capacity];
 		size = 0;
 	}
 	
-	public ArrayBasedListR( int capacity ) { //Time: O(1), Space: O(n)
+	public ArrayBasedList( int capacity ) { //Time: O(1), Space: O(n)
 		items = (T[]) new Object[capacity];
 		size = 0;
 	}
@@ -133,7 +133,7 @@ class ArrayBasedListR<T> implements ADTList<T> {
 	//Step 2: Calculate Sublist Size. Calculates how many elements will be in the new list. "fromIndex" is inclusive / "endIndex" is exclusive.
 		int subListSize = endIndex - fromIndex;
 	//Step 3: Create New List. Creates a new ArrayBasedList object. Sets the initial capacity to "subListSize". This is currently an empty list that will be filled.
-		ArrayBasedListR<T> subList = new ArrayBasedListR<>(subListSize);
+		ArrayBasedList<T> subList = new ArrayBasedList<>(subListSize);
 	//Step 4: Copy Elements. Loop starts at "fromIndex"(inclusive). Loop ends before "endIndex"(exclusive). Each element from the original list is copied to the new sublist.
 		for (int i = fromIndex; i < endIndex; i++) {
 			subList.add(items[i]);

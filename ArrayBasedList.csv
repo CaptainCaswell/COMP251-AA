@@ -1,0 +1,5 @@
+List Size,add(value),add(index+value)head,add(index+value),add(index+value)tail,remove(index)head,remove(index),remove(index)tail,remove(value),set(index+value)head,set(index+value),set(index+value)tail,indexOf(value),get(index)head,get(index),get(index)tail,contains(value),subList(fromIndex+toIndex)head,subList(fromIndex+toIndex),subList(fromIndex+toIndex)big,subList(fromIndex+toIndex)tail
+10,3460,6910,5670,4760,2740,13839,1040,1970,2270,1389,1570,5220,1310,460,509,17889,5050,12370,7340,2569
+100,3900,9009,5860,3470,9610,6740,1980,4300,1119,1250,1119,6320,1120,940,840,5340,3360,7210,14899,3790
+1000,7570,48410,25250,5460,50040,13209,2690,14989,2219,2830,3910,57730,1149,1280,1730,43000,8040,454670,610340,1010
+10000,41069,363730,169830,41419,187430,17260,1719,24300,5690,5719,5500,257050,4129,4300,3409,38110,2729,7973670,31831170,1339
