@@ -8,7 +8,8 @@ public class SinglyLinkedListRecord {
         try {
             PrintStream output = new PrintStream( new File( "SinglyLinkedList.csv" ) );
             
-            int[] testSize = { 10, 100 , 1000 , 10000, 100000, 1000000 };
+            //int[] testSize = { 10, 100 , 1000 , 10000, 100000, 1000000 };
+            int[] testSize = { 10, 100 , 1000 , 10000 };
 
             String[] tests = { "add(value)",
                                "add(index+value)head", "add(index+value)", "add(index+value)tail",
@@ -62,6 +63,8 @@ public class SinglyLinkedListRecord {
                 testList.add( rand.nextInt( n ) );
             }
 
+            System.out.println( "Running test " + test + " for size " + n );
+            
             int num = rand.nextInt( n );
             int tail = n - 1;
 

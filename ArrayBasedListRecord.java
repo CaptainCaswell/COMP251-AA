@@ -63,7 +63,7 @@ public class ArrayBasedListRecord {
                 testList.add( rand.nextInt( n ) );
             }
 
-            System.out.println("Running test: " + test);
+            System.out.println( "Running test " + test + " for size " + n );
 
             int num = rand.nextInt( n );
             int tail = n - 1;
