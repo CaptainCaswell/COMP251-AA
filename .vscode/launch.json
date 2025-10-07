@@ -3,6 +3,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "SinglyLinkedListRecord",
+            "request": "launch",
+            "mainClass": "SinglyLinkedListRecord",
+            "projectName": "COMP251-AA-1_3a9f98de"
+        },
+        {
+            "type": "java",
+            "name": "SingleyLinkedListRecord",
+            "request": "launch",
+            "mainClass": "SingleyLinkedListRecord",
+            "projectName": "COMP251-AA-1_3a9f98de"
+        },
+        {
+            "type": "java",
             "name": "SinglyLinkedListTest",
             "request": "launch",
             "mainClass": "SinglyLinkedListTest",
