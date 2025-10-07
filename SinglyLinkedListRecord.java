@@ -10,7 +10,7 @@ public class SinglyLinkedListRecord {
             
             int[] testSize = { 10, 100 , 1000 , 10000, 100000, 1000000 };
 
-            String[] tests = { "add(value)empty", "add(value)",
+            String[] tests = { "add(value)",
                                "add(index+value)head", "add(index+value)", "add(index+value)tail",
                                "remove(index)head", "remove(index)", "remove(index)tail",
                                "remove(value)",
@@ -65,17 +65,7 @@ public class SinglyLinkedListRecord {
             int num = rand.nextInt( n );
             int tail = n - 1;
 
-        
-            if (test.equals( "add(value)empty" ) ) {
-                startTime = System.nanoTime();
-				testList.add( num );
-				endTime = System.nanoTime();
-
-				timeTaken = endTime - startTime;
-				timeAvg += timeTaken;
-            }
-
-            else if (test.equals( "add(value)" ) ) {
+            if (test.equals( "add(value)" ) ) {
                 startTime = System.nanoTime();
 				testList.add( num );
 				endTime = System.nanoTime();
