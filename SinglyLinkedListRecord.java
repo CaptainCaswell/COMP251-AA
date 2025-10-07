@@ -3,12 +3,13 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Random;
 
-public class SingleyLinkedListRecord {
+public class SinglyLinkedListRecord {
     public static void main( String[] args ) {
         try {
-            PrintStream output = new PrintStream( new File( "timeData.csv" ) );
+            PrintStream output = new PrintStream( new File( "SinglyLinkedList.csv" ) );
             
             int[] testSize = { 10, 100 , 1000 , 10000, 100000, 1000000 };
+
             String[] tests = { "add(value)empty", "add(value)",
                                "add(index+value)head", "add(index+value)", "add(index+value)tail",
                                "remove(index)head", "remove(index)", "remove(index)tail",
@@ -37,6 +38,7 @@ public class SingleyLinkedListRecord {
             }
 
             output.close();
+            System.out.println("Test complete!");
 
         } catch ( FileNotFoundException e) {
             System.out.println( "Error accessing timeData.txt" );
