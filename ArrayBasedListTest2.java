@@ -1,8 +1,6 @@
-public class ArrayBasedListTest {
+public class ArrayBasedListTest2 {
     public static void main( String[] args ) {
-        ArrayBasedList<Object> testList = new ArrayBasedList<>();
-
-
+        ArrayBasedList<Object> testList = new ArrayBasedList<>( 20 );
 
         testList.add( 0 );
         testList.add( 1 );
@@ -16,17 +14,8 @@ public class ArrayBasedListTest {
         System.out.println(testList);
 
         System.out.println( "Removing: " + testList.remove(0) );
-
-        System.out.println(testList);
-    
         System.out.println( "Removing: " + testList.remove(2) );
-
-        System.out.println(testList);
-
-        //System.out.println( "Removing: " + testList.remove(5) );
-
-        Integer x = 99;
-        System.out.println( "Removing: " + testList.remove(x) );
+        System.out.println( "Removing: " + testList.remove(5) );
 
         System.out.println(testList);
 

@@ -42,7 +42,7 @@ public class SinglyLinkedListTest {
 
         System.out.println( testList );
 
-       System.out.println( testList.subList( 1,1 ) );
+       System.out.println( testList.subList( 0,3 ) );
 
     }
 }

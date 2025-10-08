@@ -1,5 +1,3 @@
-package Assignment1;
-
 interface ADTList<T> {
 	// Created based on ADTList requirements from Figure 1 in Assignment 1 PDF
 	// Added comments based on the descriptions from Table 1 in Assignment 1 PDF

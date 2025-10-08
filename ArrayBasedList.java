@@ -14,7 +14,8 @@ class ArrayBasedList<T> implements ADTList<T> {
 		size = 0;
 	}
 	
-	public ArrayBasedList( int capacity ) { //Time: O(1), Space: O(n)
+	public ArrayBasedList( int initialCapacity ) { //Time: O(1), Space: O(n)
+		capacity = initialCapacity;
 		items = (T[]) new Object[capacity];
 		size = 0;
 	}
@@ -131,11 +132,11 @@ class ArrayBasedList<T> implements ADTList<T> {
 			);
 		}
 	//Step 2: Calculate Sublist Size. Calculates how many elements will be in the new list. "fromIndex" is inclusive / "endIndex" is exclusive.
-		int subListSize = endIndex - fromIndex;
+		int subListSize = endIndex - fromIndex + 1;
 	//Step 3: Create New List. Creates a new ArrayBasedList object. Sets the initial capacity to "subListSize". This is currently an empty list that will be filled.
 		ArrayBasedList<T> subList = new ArrayBasedList<>(subListSize);
 	//Step 4: Copy Elements. Loop starts at "fromIndex"(inclusive). Loop ends before "endIndex"(exclusive). Each element from the original list is copied to the new sublist.
-		for (int i = fromIndex; i < endIndex; i++) {
+		for (int i = fromIndex; i <= endIndex; i++) {
 			subList.add(items[i]);
 		}
 	//Step 5: Return the New List. Returns the newly created list. Return type is ADTList<T> (the interface), not ArrayBasedList<T>	
@@ -149,7 +150,7 @@ class ArrayBasedList<T> implements ADTList<T> {
 			output += get(i) + " ";
 		}
 
-		output += "}";
+		output += "} Capacity: " + capacity;
 
 		return output;
 	}

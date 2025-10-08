@@ -52,7 +52,7 @@ public class SinglyLinkedListRecord {
         long startTime, endTime, timeTaken;
         long timeAvg = 0;
 
-        int runs = 10;
+        int runs = 5;
         
         // Do test 3 times
         for ( int i = 1; i <= runs; i++ ) {
