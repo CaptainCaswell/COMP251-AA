@@ -8,18 +8,17 @@ public class ArrayBasedListRecord {
         try {
             PrintStream output = new PrintStream( new File( "ArrayBasedList.csv" ) );
             
-            //int[] testSize = { 10, 100 , 1000 , 10000, 100000, 1000000 };
-            int[] testSize = { 10, 100 , 1000 , 10000 };
+            int maxTest = 1000000;
 
             String[] tests = { "add(value)",
                                "add(index+value)head", "add(index+value)", "add(index+value)tail",
                                "remove(index)head", "remove(index)", "remove(index)tail",
-                               "remove(value)",
+                               "remove(value)head", "remove(value)", "remove(value)tail",
                                "set(index+value)head", "set(index+value)", "set(index+value)tail",
-                               "indexOf(value)",
+                               "indexOf(value)head", "indexOf(value)", "indexOf(value)tail",
                                "get(index)head", "get(index)", "get(index)tail",
-                               "contains(value)",
-                               "subList(fromIndex+toIndex)head", "subList(fromIndex+toIndex)", "subList(fromIndex+toIndex)big", "subList(fromIndex+toIndex)tail" };
+                               "contains(value)head", "contains(value)", "contains(value)tail",
+                               "subList(fromIndex+toIndex)head", "subList(fromIndex+toIndex)", "subList(fromIndex+toIndex)tail" };
 
             // Generate header
             output.print( "List Size" );
@@ -29,7 +28,7 @@ public class ArrayBasedListRecord {
             }
 
             // Iterate through test sizes
-            for ( int n : testSize ) {
+            for ( int n = 10; n <=maxTest; n *= 10 ) {
 
                 output.print("\n" + n);
 
@@ -42,7 +41,7 @@ public class ArrayBasedListRecord {
             System.out.println("Test complete!");
 
         } catch ( FileNotFoundException e) {
-            System.out.println( "Error accessing timeData.txt" );
+            System.out.println( "Error accessing file" );
         }
     }
 
@@ -52,19 +51,20 @@ public class ArrayBasedListRecord {
         long startTime, endTime, timeTaken;
         long timeAvg = 0;
 
-        int runs = 5;
+        int runs = 20;
         
         // Do test 3 times
         for ( int i = 1; i <= runs; i++ ) {
 
             // Create test array with n entries for each run
-            ArrayBasedList<Object> testList = new ArrayBasedList<>();
+            ArrayBasedList<Object> testList = new ArrayBasedList<>( n );
+            
             for ( int j = 0; j < n; j++ ) {
                 testList.add( rand.nextInt( n ) );
             }
 
             System.out.println( "Running test " + test + " for size " + n );
-
+            
             int num = rand.nextInt( n );
             int tail = n - 1;
 
@@ -115,7 +115,7 @@ public class ArrayBasedListRecord {
 
             else if (test.equals ( "remove(index)" ) ) {
                 startTime = System.nanoTime();
-				testList.remove( num );
+				testList.remove( n / 2 );
 				endTime = System.nanoTime();
 
 				timeTaken = endTime - startTime;
@@ -131,9 +131,33 @@ public class ArrayBasedListRecord {
 				timeAvg += timeTaken;
             }
 
-            else if (test.equals( "remove(value)" ) ) {
+            else if (test.equals( "remove(value)head" ) ) {
+                testList.set( 0, n + 100 );
+
                 startTime = System.nanoTime();
-				testList.remove( num );
+                testList.remove( (Integer)( n + 100 ) );
+				endTime = System.nanoTime();
+
+				timeTaken = endTime - startTime;
+				timeAvg += timeTaken;
+            }
+
+            else if (test.equals( "remove(value)" ) ) {
+                testList.set( n / 2, n + 100 );
+
+                startTime = System.nanoTime();
+                testList.remove( (Integer)( n + 100 ) );
+				endTime = System.nanoTime();
+
+				timeTaken = endTime - startTime;
+				timeAvg += timeTaken;
+            }
+
+            else if (test.equals( "remove(value)tail" ) ) {
+                testList.set( tail, n + 100 );
+
+                startTime = System.nanoTime();
+                testList.remove( (Object)( n + 100 ) );
 				endTime = System.nanoTime();
 
 				timeTaken = endTime - startTime;
@@ -151,7 +175,7 @@ public class ArrayBasedListRecord {
 
             else if (test.equals( "set(index+value)" ) ) {
                 startTime = System.nanoTime();
-				testList.set( num, num );
+				testList.set( n / 2, num );
 				endTime = System.nanoTime();
 
 				timeTaken = endTime - startTime;
@@ -168,9 +192,33 @@ public class ArrayBasedListRecord {
             }
 
 
-            else if (test.equals( "indexOf(value)" ) ) {
+            else if (test.equals( "indexOf(value)head" ) ) {
+                testList.set( 0, n + 100 );
+
                 startTime = System.nanoTime();
-				testList.indexOf( num );
+				testList.indexOf( n + 100 );
+				endTime = System.nanoTime();
+
+				timeTaken = endTime - startTime;
+				timeAvg += timeTaken;
+            }
+
+            else if (test.equals( "indexOf(value)" ) ) {
+                testList.set( n / 2, n + 100 );
+
+                startTime = System.nanoTime();
+				testList.indexOf( n + 100 );
+				endTime = System.nanoTime();
+
+				timeTaken = endTime - startTime;
+				timeAvg += timeTaken;
+            }
+
+            else if (test.equals( "indexOf(value)tail" ) ) {
+                testList.set( tail, n + 100 );
+
+                startTime = System.nanoTime();
+				testList.indexOf( n + 100 );
 				endTime = System.nanoTime();
 
 				timeTaken = endTime - startTime;
@@ -204,9 +252,33 @@ public class ArrayBasedListRecord {
 				timeAvg += timeTaken;
             }
 
-            else if (test.equals( "contains(value)" ) ) {
+            else if (test.equals( "contains(value)head" ) ) {
+                testList.set( 0, n + 100 );
+
                 startTime = System.nanoTime();
-				testList.contains( num );
+				testList.contains( n + 100 );
+				endTime = System.nanoTime();
+
+				timeTaken = endTime - startTime;
+				timeAvg += timeTaken;
+            }
+
+            else if (test.equals( "contains(value)" ) ) {
+                testList.set( n/2, n + 100 );
+
+                startTime = System.nanoTime();
+				testList.contains( n + 100 );
+				endTime = System.nanoTime();
+
+				timeTaken = endTime - startTime;
+				timeAvg += timeTaken;
+            }
+
+            else if (test.equals( "contains(value)tail" ) ) {
+                testList.set( tail, n + 100 );
+
+                startTime = System.nanoTime();
+				testList.contains( n + 100 );
 				endTime = System.nanoTime();
 
 				timeTaken = endTime - startTime;
@@ -215,7 +287,7 @@ public class ArrayBasedListRecord {
 
             else if ( test.equals( "subList(fromIndex+toIndex)head" ) ) {
                 startTime = System.nanoTime();
-				testList.subList( 0, 0 );
+				testList.subList( 0,num );
 				endTime = System.nanoTime();
 
 				timeTaken = endTime - startTime;
@@ -224,16 +296,7 @@ public class ArrayBasedListRecord {
 
             else if ( test.equals( "subList(fromIndex+toIndex)" ) ) {
                 startTime = System.nanoTime();
-				testList.subList( n / 4, ( 3 * n ) / 4 );
-				endTime = System.nanoTime();
-
-				timeTaken = endTime - startTime;
-				timeAvg += timeTaken;
-            }
-
-            else if ( test.equals( "subList(fromIndex+toIndex)big" ) ) {
-                startTime = System.nanoTime();
-				testList.subList( 1, tail - 1 );
+				testList.subList( num / 2, num );
 				endTime = System.nanoTime();
 
 				timeTaken = endTime - startTime;
@@ -242,7 +305,7 @@ public class ArrayBasedListRecord {
 
             else if ( test.equals( "subList(fromIndex+toIndex)tail" ) ) {
                 startTime = System.nanoTime();
-				testList.subList( tail, tail );
+				testList.subList( num, tail );
 				endTime = System.nanoTime();
 
 				timeTaken = endTime - startTime;

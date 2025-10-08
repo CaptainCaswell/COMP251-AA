@@ -25,7 +25,7 @@ public class ArrayBasedListTest {
 
         //System.out.println( "Removing: " + testList.remove(5) );
 
-        Integer x = 99;
+        Integer x = 99; // Used to access overloaded remove(T value)
         System.out.println( "Removing: " + testList.remove(x) );
 
         System.out.println(testList);

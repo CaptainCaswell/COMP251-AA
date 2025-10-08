@@ -176,10 +176,17 @@ class SinglyLinkedList<T> implements ADTList<T> {
 		// If no matches found
 		return false;
 	}
+
+
 	public ADTList<T> subList(int fromIndex, int toIndex) {
 		// Validate indexes
-		if ( fromIndex < 0 || fromIndex > toIndex || toIndex > size -1 ) {
+		if ( fromIndex < 0 || toIndex > size -1 ) {
 				throw new IndexOutOfBoundsException("Indexes: " + fromIndex + " to " + toIndex + " , Size: " + ( toIndex - fromIndex ) );
+		}
+
+		if ( fromIndex > toIndex ) {
+			SinglyLinkedList<T> emptyList = new SinglyLinkedList<>();
+			return emptyList;
 		}
 		
 		SinglyLinkedList<T> output = new SinglyLinkedList<>();
@@ -219,7 +226,7 @@ class SinglyLinkedList<T> implements ADTList<T> {
 		return output;
 	}
 
-	// Private methods
+	// Helper methods
 	private boolean validate(int index) { // Method to check if index is valid
 		if ( index < 0 || index > size - 1 ) throw new IndexOutOfBoundsException("Index: " + index + " , Size: " + size);
 		return true;

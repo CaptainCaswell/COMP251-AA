@@ -82,7 +82,12 @@ class ArrayBasedList<T> implements ADTList<T> {
 		for (int i = index; i < size -1; i++) { //shifts elements to the left to account for the removed element in the array list
 			items[i] = items[i + 1];
 		}
+
 		size--;
+
+		// Make the last, now duplicated, index null
+		items[size] = null;
+		
 		return removedelement;
 	}
 	
@@ -125,21 +130,26 @@ class ArrayBasedList<T> implements ADTList<T> {
 	// Was not sure how to build the ADTList<T> subList(int fromIndex, int endIndex) method
 	// Asked AI how to build it and to break down and explain the function
 	public ADTList<T> subList(int fromIndex, int endIndex) {
-	//Step 1: Parameter Validation. (starting index can't be negative || ending index can't be beyond the list || start can't be after the end)
+		
+		//Step 1: Parameter Validation. (starting index can't be negative || ending index can't be beyond the list || start can't be after the end)
 		if (fromIndex < 0 || endIndex > size || fromIndex > endIndex) {
 			throw new IndexOutOfBoundsException(
 				"fromIndex: " + fromIndex + ", endIndex: " + endIndex + ", Size: " + size
 			);
 		}
-	//Step 2: Calculate Sublist Size. Calculates how many elements will be in the new list. "fromIndex" is inclusive / "endIndex" is exclusive.
+		
+		//Step 2: Calculate Sublist Size. Calculates how many elements will be in the new list. "fromIndex" is inclusive / "endIndex" is exclusive.
 		int subListSize = endIndex - fromIndex + 1;
-	//Step 3: Create New List. Creates a new ArrayBasedList object. Sets the initial capacity to "subListSize". This is currently an empty list that will be filled.
+		
+		//Step 3: Create New List. Creates a new ArrayBasedList object. Sets the initial capacity to "subListSize". This is currently an empty list that will be filled.
 		ArrayBasedList<T> subList = new ArrayBasedList<>(subListSize);
-	//Step 4: Copy Elements. Loop starts at "fromIndex"(inclusive). Loop ends before "endIndex"(exclusive). Each element from the original list is copied to the new sublist.
+
+		//Step 4: Copy Elements. Loop starts at "fromIndex"(inclusive). Loop ends before "endIndex"(exclusive). Each element from the original list is copied to the new sublist.
 		for (int i = fromIndex; i <= endIndex; i++) {
 			subList.add(items[i]);
 		}
-	//Step 5: Return the New List. Returns the newly created list. Return type is ADTList<T> (the interface), not ArrayBasedList<T>	
+		
+		//Step 5: Return the New List. Returns the newly created list. Return type is ADTList<T> (the interface), not ArrayBasedList<T>	
 		return subList;
 	}
 
