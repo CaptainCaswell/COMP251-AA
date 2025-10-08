@@ -6,7 +6,7 @@ import java.util.Random;
 public class ArrayBasedListRecord {
     public static void main( String[] args ) {
         try {
-            PrintStream output = new PrintStream( new File( "ArrayBasedList.csv" ) );
+            PrintStream output = new PrintStream( new File( "ArrayBasedListtest.csv" ) );
             
             int maxTest = 1000000;
 
@@ -58,7 +58,7 @@ public class ArrayBasedListRecord {
 
             // Create test array with n entries for each run
             ArrayBasedList<Object> testList = new ArrayBasedList<>( n );
-            
+
             for ( int j = 0; j < n; j++ ) {
                 testList.add( rand.nextInt( n ) );
             }

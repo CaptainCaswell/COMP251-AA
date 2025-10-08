@@ -6,7 +6,7 @@ import java.util.Random;
 public class SinglyLinkedListRecord {
     public static void main( String[] args ) {
         try {
-            PrintStream output = new PrintStream( new File( "SinglyLinkedList.csv" ) );
+            PrintStream output = new PrintStream( new File( "NewFile2.csv" ) );
             
             int maxTest = 1000000;
 
