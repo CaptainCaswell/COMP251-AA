@@ -40,8 +40,7 @@ class SinglyLinkedList<T> implements ADTList<T> {
 	public void add( int index, T value ) {
 		// Check if index valid. Must be between 0 and size, inclusive
 		if ( index < 0 || index > size ) {
-			System.out.println( "Error: Index out of bounds" );
-			return;
+			throw new IndexOutOfBoundsException("Index: " + index + " , Size: " + size);
 		}
 
 		// Case 1: Index is last index
@@ -180,8 +179,7 @@ class SinglyLinkedList<T> implements ADTList<T> {
 	public ADTList<T> subList(int fromIndex, int toIndex) {
 		// Validate indexes
 		if ( fromIndex < 0 || fromIndex > toIndex || toIndex > size -1 ) {
-				System.out.println( "Error: Index out of bounds" );
-				return null;
+				throw new IndexOutOfBoundsException("Indexes: " + fromIndex + " to " + toIndex + " , Size: " + ( toIndex - fromIndex ) );
 		}
 		
 		SinglyLinkedList<T> output = new SinglyLinkedList<>();
@@ -223,11 +221,7 @@ class SinglyLinkedList<T> implements ADTList<T> {
 
 	// Private methods
 	private boolean validate(int index) { // Method to check if index is valid
-		if ( index < 0 || index > size - 1 ) {
-			System.out.println( "Error: Index out of bounds" );
-			return false;
-		} else {
-			return true;
-		}
+		if ( index < 0 || index > size - 1 ) throw new IndexOutOfBoundsException("Index: " + index + " , Size: " + size);
+		return true;
 	}
 }
